@@ -1,0 +1,12 @@
+*~
+*.elc
+/elpa
+custom.el
+/smex-items
+/projectile-bookmarks.eld
+/places
+/network-security.data
+/ido.last
+/.smex-items
+/.recentf
+/.last-package-update-day
