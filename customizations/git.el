@@ -10,5 +10,4 @@
 (use-package diff-hl
   :pin melpa-stable
   :hook ((prog-mode . diff-hl-mode)
-         (prog-mode . diff-hl-flydiff-mode)
-         (prog-mode . diff-hl-margin-mode)))
+         (prog-mode . diff-hl-flydiff-mode)))
