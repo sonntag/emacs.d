@@ -17,3 +17,9 @@
 
 ;; Save place in files between sessions
 (save-place-mode t)
+
+;; Setup autosave on all buffers
+(use-package super-save
+  :config
+  (setq super-save-auto-save-when-idle t)
+  (super-save-mode +1))
