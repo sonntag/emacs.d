@@ -5,29 +5,27 @@
 ;; Setup clojure mode
 (use-package clojure-mode
   :pin melpa-stable
+  :hook (clojure-mode . subword-mode)
   :config
   ;;(require 'clojure-mode-extra-font-locking)
   (setq clojure-indent-style :align-arguments))
 
-(add-hook 'clojure-mode-hook
-          (lambda ()
-            (setq inferior-lisp-program "lein repl")
-            (put-clojure-indent 'reg-event-db 1)
-            (put-clojure-indent 'reg-event-fx 1)
-            (put-clojure-indent 'reg-fx 1)
-            (put-clojure-indent 'reg-cofx 1)
-            (put-clojure-indent 'reg-sub 1)
-            (put-clojure-indent 'bind-relations 1)
-            (put-clojure-indent 'react-method 1)
-            (put-clojure-indent 'render 1)
-            (put-clojure-indent 'componentDidMount 1)
-            (put-clojure-indent 'componentWillUnmount 1)
-            (put-clojure-indent 'componentDidUpdate 1)
-            (subword-mode)))
+(use-package clj-refactor
+  :pin melpa-stable
+  :hook (clojure-mode . clj-refactor-mode)
+  :config (cljr-add-keybindings-with-prefix "C-c C-r"))
 
 ;;;;
 ;; Cider
 ;;;;
+
+(use-package cider
+  :pin melpa-stable
+  :config
+  (setq cider-lein-command "/usr/local/bin/lein")
+  (setq cider-inject-dependencies-at-jack-in nil)
+  (setq cider-repl-use-pretty-printing t)
+  (setq cider-pprint-fn 'puget))
 
 ;; provide minibuffer documentation for the code you're typing into the repl
 (add-hook 'cider-mode-hook 'eldoc-mode)
